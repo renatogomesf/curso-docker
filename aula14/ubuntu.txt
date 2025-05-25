@@ -10,6 +10,9 @@
 (--name: nomeia o container desejado.)
 === docker run --name "nome desejado" -i -t ubuntu
 
+(renomeia um container)
+=== docker rename "nome atual" "nome novo"
+
 (-d: "detached mode"...  o contêiner será executado em segundo plano e retorna o ID do contêiner)
 === docker run -d -i ubuntu.
 

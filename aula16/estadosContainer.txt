@@ -1,0 +1,42 @@
+os containers podem ter 5 estados... created, running, paused, stopped e deleted.
+
+"docker run" funciona como um "docker create" + "docker start". cria e starta um container. 
+
+
+
+//////////// PARTINDO DO CREATED ////////////
+created: através do comando "docker create 'nome da imagem'" cria um container.
+
+created -> running: através do comando "docker start "id/nome do container".
+
+created -> deleted: através do comando "docker rm "id/nome do container".
+
+
+
+//////////// PARTINDO DO RUNNING ////////////
+
+(docker kill: finaliza um container imediatamente sem esperar os 10s.)
+running -> stopped: através do comando "docker kill 'id/nome container'"
+
+(docker stop: finaliza um container esperando os 10s. finaliza todos os processos corretamente)
+running -> stopped: através do comando "docker stop 'id/id container'"
+
+(pausa um container. os processos continuam lá, mas congelados.)
+running -> paused: através do comando "docker pause 'id/nome container'"
+
+(reinicia todos os processos do container)
+running -> running: através do comando "docker restart 'id/nome container'"
+
+
+
+//////////// PARTINDO DO PAUSED ////////////
+
+paused -> running: através do comando "docker unpause 'id/nome container'"
+
+
+
+//////////// PARTINDO DO STOPPED ////////////
+
+stopped -> start: através do comando "docker start "id/nome do container".
+
+stopped -> deleted: através do comando "docker rm "id/nome do container".
