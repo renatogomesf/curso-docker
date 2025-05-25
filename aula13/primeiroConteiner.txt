@@ -1,0 +1,15 @@
+(caso a imagem não exista localmente, ele busca automaticamente, faz o download e executa.)
+(todas as vezes que executa o docker run, ele cria um novo conteiner.)
+=== docker run "nome da imagem"
+
+(lista todos os conteiner em execução)
+=== docker ps.
+
+(lista todos os conteiner... parados e em execução.)
+=== docker ps -a.
+
+(remove um conteiner)
+=== docker rm "id do conteiner"
+
+(remove uma imagem)
+=== docker rmi "nome da imagem"
