@@ -1,24 +1,24 @@
-(cria um conteiner ubuntu. mas ele executa e logo para.)
+(cria um container ubuntu. mas ele executa e logo para.)
 === docker run ubuntu.
 
-(cria um conteiner ubuntu que se mantem ativo esperando alguma iteração.)
-(-i: cria um ambiente de iteração com o conteiner, mantem o conteiner ativo.)
-(-t: cria um pseudo terminal no conteiner "terminal virtual".)
+(cria um container ubuntu que se mantem ativo esperando alguma iteração.)
+(-i: cria um ambiente de iteração com o container, mantem o container ativo.)
+(-t: cria um pseudo terminal no container "terminal virtual".)
 === docker run -i -t ubuntu. ou docker run -it ubuntu (pode por cada flag separa ou junta.)
 
-(roda e nomeia um conteiner)
-(--name: nomeia o conteiner desejado.)
+(roda e nomeia um container)
+(--name: nomeia o container desejado.)
 === docker run --name "nome desejado" -i -t ubuntu
 
 (-d: "detached mode"...  o contêiner será executado em segundo plano e retorna o ID do contêiner)
 === docker run -d -i ubuntu.
 
-(exec: permite executar algo no conteiner em execução)
-=== docker exec "id do conteiner" "comando desejado"
+(exec: permite executar algo no container em execução)
+=== docker exec "id do container" "comando desejado"
 
-(stop: para um conteiner em segundo plano ou qualquer conteiner.)
-=== docker stop "id do conteiner"
+(stop: para um container em segundo plano ou qualquer container. leva em média 10s para parar o container saudavelmente.)
+=== docker stop "id do container"
 
-(start: inicia um conteiner parado ao invés de criar um novo como o "run" faz.)
-(-a: "attach mode"... inverso do "-d", pois roda um conteiner em primeiro plano.)
-=== docker start -a -i "id ou nome do conteiner"
+(start: inicia um container parado ao invés de criar um novo como o "run" faz.)
+(-a: "attach mode"... inverso do "-d", pois roda um container em primeiro plano.)
+=== docker start -a -i "id ou nome do container"

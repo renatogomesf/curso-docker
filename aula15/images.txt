@@ -1,0 +1,25 @@
+// como as imagens se comportam.
+
+a imagem do ubunto pesa 117mb... se cada vez que um conteiner for criado e fosse feita uma cópia dessa imagem, teria um consumo enorme de armazenamento. mas, na verdade, não é feita uma cópia da imagem. ela fica lá para consumo dos conteiner... cada conteiner criado usa a mesma imagem a partir de uma camada abstrata onde é permitido ler e excrever (read/write). e essa camada abstrata read/write é única para cada conteiner. cada um tem a sua com suas regras e arquivos. um conteiner não interfere no outro.
+
+
+(inspect: permite a inspeção de um elemento... imagem ou conteiner)
+=== docker inspect "id image/ id container"
+
+(remove/exclui todos os container sem precisar passar nome por nome ou id por id.)
+=== docker container prune
+
+(-t: permite definir um tempo para parar um container. usando "0" (zero), o container para imediatamente.)
+=== docker stop -t "tempo desejado" "id do container"
+
+(para e exclui um container)
+(-f: força a remoção de um container mesmo que esteja em execução.)
+=== docker rm -f "id do container"
+
+(-q: retorna o id de todas as images)
+=== docker images -q
+
+(remover/exclui todas as imagens de uma vez só)
+("$()" permite o uso de um comando dentro de outro. executa primeiro o comando dentro do "$()" e depois o de fora.)
+(para remover as imagens. precisa que os container ligados a elas estejam parados)
+=== docker rmi $(docker images -q)
