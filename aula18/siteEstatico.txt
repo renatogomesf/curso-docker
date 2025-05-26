@@ -1,0 +1,17 @@
+(quando não é uma imagem oficial, é preciso digitar o nome do usuário e depois o nome da image.)
+ === docker run "nome do usuário"/"nome da imagem"
+
+
+(-P(letra maiúscula): deixa o docker expor/escolher uma porta automaticamente para apontar para a porta de uso do container.)
+=== docker run -P -d dockersamples/static-site
+
+(-p(letra minúscula): permite definir uma porta manualmente.)
+(5000:80: a porta 5000 aponta para a 80 do container.)
+=== docker run -p 5000:80 -d dockersamples/static-site
+
+(history: mostra o historico da imagem)
+=== docker history dockersamples/static-site
+
+(-e: permite acessar variáveis.)
+(neste caso, estamos acessando a variável AUTHOR e modificando ela.)
+=== docker run -p 80:80 -d -e AUTHOR="renato" dockersamples/static-site
