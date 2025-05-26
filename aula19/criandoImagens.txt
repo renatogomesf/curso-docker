@@ -1,0 +1,17 @@
+
+////////// DOCKER COMMIT //////////
+não é a melhor forma de se criar imagens!!
+a melhro forma é através do Dockerfile!
+
+
+-nas imagens existe um passo-a-passo para construir o container.
+-as imagens possuem uma sequência de passos/camadas que ditam o comportamento do container.
+
+(history: permite ver todas as camadas da imagem.)
+=== docker history "nome da imagem".
+
+
+normalmente as imagens são criadas a partir de uma imagem já existent. (imagem base.)
+
+(a criação de uma imagem parte de um container personalizado criado pelo usuário. container esse que partiu de uma imagem base. ou seja, pegou-se uma imagem, cria um container a partir dela, instala/personaliza como deseja e dois cria uma imagem a partir desse container personalizado.)
+=== docker commit "id/nome do container" "dar nome a imagem"
