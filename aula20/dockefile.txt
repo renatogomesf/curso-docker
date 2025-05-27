@@ -1,0 +1,21 @@
+Dockerfile nada mais é que um arquivo de texto que vai conter toda a extrutura da imagem. é muito mais prático, tem controle de versão, tem colaboração, legibilidade.
+
+basta criar um arquivo com o nome "Dockerfile"
+
+é possível criar um arquivo gerador de imagem com nome para caso existam mais de uma imagem dentro de um projeto.
+
+ex: <nome desejado>.dockerfile
+
+para rodar o arquivo Dockerfile, precisa ir até a raiz do projeto onde possui o arquivo Dockerfile e rodar o comando:
+
+=== docker build -t "nome da imagem que deseja construir:tag" "local do arquivo Dockerfile"
+
+como só existe um arquivo Dockerfile, não precisa da tag -f para definir qual arquivo buildar.
+
+e como já estamos na raiz do projeto, basta por um ponto "." para definir o local do arquivo Dockerfile
+
+docker build -t minha-app-python:v1 .
+
+caso o arquivo siga esse formato "<nome desejado>.dockerfile" é preciso criar o mesmo comando de cima, mas adicionando no final qual arquivo deseja buildar.
+
+=== docker build -t "nome da imagem que deseja construir:tag" -f "nome do arquivo que ira buildar" "local do arquivo Dockerfile"
