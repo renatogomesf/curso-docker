@@ -8,7 +8,7 @@ FROM ubuntu:22.04
 # comando que será executado quando a imagem for construida.
 RUN apt-get update && apt-get install python3.11 python3.11-dev python3-pip -y
 
-# definir diretorio de trabalho do container
+# definir diretorio de trabalho da imagem
 WORKDIR /app
 
 # comando que copia toda a aplicação e joga pra dentro do container no diretorio de trabalho definido anteriormente
