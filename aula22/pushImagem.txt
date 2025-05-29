@@ -1,0 +1,8 @@
+
+para fazer o push de imagens (já que sou um usuário comum), é necessário fazer o build da imagem primeiro e o nome da imagem deve ser o nome de usuário/nome dado a imagem e sua versão.
+
+ex: docker build -t renatogomesf/"nome imagem":"versão" .
+
+depois basta fazer o push com o comando "docker push".
+
+=== docker push "nome da imagem + versão"
