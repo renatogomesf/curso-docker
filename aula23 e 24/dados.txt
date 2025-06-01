@@ -1,0 +1,10 @@
+o que são volumes em docker.
+
+- armazenamento/persistência de dados entre Docker Host(minha máquina através de Arquivo ou diretório) e Container.
+
+- com Volumes, ao crirar novos Container e definir o volume, tudo o que for mudado no arquivo/diretório poderá ser visto pelo Container. e tudo o que for mudado no Container poderá ser visto no arquivo/diretório.
+
+(-v: usado para criar o volume)
+=== docker run -it -v "dar nome ao diretório que irá persistir os dados" "nome da imagem"
+
+ex: docker run -it -v /app ubuntu
