@@ -1,0 +1,13 @@
+permite o bind/configurar um diretório da máquina para um diretório do Container onde queremos fazer a persistência de dados.
+
+("diretório da máquina":"diretório do Container" --> liga um diretório da máquina com o do Container. caso os diretórios não existam, eles serão criados)
+=== docker run -it -v C:/Users/SeuUsuario/"diretório da máquina":"diretório do Container" "nome imagem"
+
+ex: docker run -it -v C:/Users/renat/minha-app:/app/exemplo ubuntu
+
+
+outra forma de fazer bind mount (diretório da máquina deve existir. nesta forma ele não cria automático.).
+
+=== docker run -it --mount type=bind, source=C:/Users/SeuUsuario/"diretório da máquina", target="diretório do Container" "nome imagem"
+
+ex: docker run -it --mount type=bind,source=C:/Users/renat/meu-novo-app,target=/app-novo ubuntu
