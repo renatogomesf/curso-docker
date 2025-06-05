@@ -1,0 +1,25 @@
+persistência de dados com volumes é gerenciado pelo próprio docker host. não e feito um arquivo local. é a melhor forma de persistir dados.
+
+(criar volume)
+=== docker volume create "nome para o volume"
+
+ex: docker volume create teste-ubuntu
+
+(ver volumes existentes)
+=== docker volume ls
+
+(criar um Container com o volume criado)
+=== docker run -it --mount source="nome do volume",target="nome do diretório do Container" "nome da imagem"
+
+ex: docker run -it --mount source=teste-ubuntu,target=/volume-ubuntu ubuntu
+
+(excluir volume)
+=== docker volume rm "nome volume"
+
+ex: docker volume rm teste-ubuntu
+
+(é possível crirar volumes já na hora de rodar um container. caso o vaolume não exista, ele cria.)
+
+=== docker run -it --mount source="nome do volume",target="nome do diretório do Container" "nome da imagem"
+
+ex: docker run -it --mount source=novo-volume-ubuntu,target=/aplicacao-volume ubuntu
