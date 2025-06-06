@@ -1,0 +1,12 @@
+
+porsistência de dados com TMPFS. aqui os dados são persistidos na memória ram e, quando um container for parado/finalizado, os dados dentro do diretório criado serão perdidos.
+
+=== docker run -it --tmpfs="diretório do container" "imagem"
+
+ex: docker run -it --tmpfs=/minha-app ubuntu
+
+outra forma de criar com TMPFS
+
+=== docker run -it --mount type=tmpfs,destination="diretório container" "imagem"
+
+ex: docker run -it --mount type=tmpfs,destination=/minha-aplicacao ubuntu
