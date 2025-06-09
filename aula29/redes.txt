@@ -1,0 +1,3 @@
+o docker tem 3 redes. bridge, host e none.
+
+o docker por padrão faz o gerenciamento dos containers e redes fazendo seus endereçamentos. os containers são criados na rede bridge.
