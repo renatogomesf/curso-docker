@@ -1,0 +1,36 @@
+(vericar uma das redes (bridge, host, none) e retorna os containers que estão usando ela.)
+
+=== docker nerwork inspect "nome da rede".
+
+ex: docker nerwork inspect bridge
+
+(criando rede manualmente)
+(--drive: permite a escolha da rede... bridge, host e none)
+=== docker network create --driver "nome do drive" "dar nome a rede"
+
+ex: docker network create --driver bridge minha-rede
+
+(listar redes)
+=== docker network ls
+
+(pegar um container em execução e desconecta da rede)
+=== docker network disconnect "rede que quer desconectar" "nome do container"
+
+ex: docker network disconnect bridge ubuntu1
+
+(pegar um container em execução e conecta a uma rede)
+=== docker network connect "rede que quer conectar" "nome do container"
+
+ex: docker network connect minha-rede ubuntu1
+
+(cria um container já definindo sua rede)
+=== docker run -it --network "nome da rede" "imagem"
+
+ex: docker run -it --network minha-rede --name ubuntu2 ubuntu
+
+é possível conectar a um container somente com o nome dele ao invés de usar o ip
+
+(para remover uma rede. se tiver algum container conectado a rede que quer apagar, ele não permitirá e dará um erro.)
+=== docker network rm "nome da rede"
+
+ex: docker network rm minha-rede
