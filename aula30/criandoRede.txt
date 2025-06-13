@@ -28,7 +28,7 @@ ex: docker network connect minha-rede ubuntu1
 
 ex: docker run -it --network minha-rede --name ubuntu2 ubuntu
 
-é possível conectar a um container somente com o nome dele ao invés de usar o ip
+*******é possível conectar a um container/fazer a comunicação entre containers somente com o nome deles ao invés de usar o ip*******
 
 (para remover uma rede. se tiver algum container conectado a rede que quer apagar, ele não permitirá e dará um erro.)
 === docker network rm "nome da rede"
