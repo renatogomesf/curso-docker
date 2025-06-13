@@ -1,0 +1,15 @@
+rede Host: sempre que quiser subir um container atrelado ao docker host/WSL, usa-se rede host. quando se precisa acessar um container, é precisar mapear a porta com o "-p". como ele está inserido no docker host através da rede host, isso não é preciso.
+
+(como o container é inserido por padrão na rede bridge, é preciso mapear a porta (3000:80))
+ex: docker run -d -p 3000:80 dockersamples/static-site
+
+(inserido agora na rede host do docker host)
+(desta forma é possível acessar o container pela porta que ele expos... ao invés de mapear, pegando a porta que ele expos (80) e conectando a uma porta da minha máquina (3000).)
+ex: docker run -d --network host dockersamples/static-site
+
+
+
+
+rede None: o container não está inserido em nenhuma interfce de rede. não terá ip. não terá acesso a internet.
+
+usado com containers que não precisam acessar a rede. containers que fazem apenas processamento de dados.
