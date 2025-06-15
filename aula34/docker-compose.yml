@@ -1,0 +1,76 @@
+
+# primeiro passa a versão. OBSOLETO
+# version: '3'
+
+# informar serviços que vai subir como container
+services:
+
+  # nome do serviço
+  meu-blog: 
+
+    # nome da imagem
+    image: wordpress:6.2.2
+
+    # nome do container
+    container_name: wordpress
+
+    # sempre que ouver uma falha no container/docker demo for reiniciado, esse container será reiniciado também.
+    restart: always
+
+    # variaveis de ambiente
+    environment:
+        # host é a porta do db. neste caso é o nome do container.
+      - WORDPRESS_DB_HOST=mysql
+      - WORDPRESS_DB_USER=lucas
+      - WORDPRESS_DB_PASSWORD=123456
+      - WORDPRESS_DB_NAME=wp-example
+
+    # bind de portas. porta máquina : porta container
+    ports:
+      - 80:80
+
+    # definição do volume. diretório máquina : diretório container
+    # caso não tenha. eles serão criados.
+    volumes:
+      - wordpress:/var/www/html
+
+    # definir qual network usar. (criar network antes ou usar padrão)
+    networks:
+      - meu-blog
+  db:
+    image: mysql:5.7
+
+    container_name: mysql
+
+    restart: always
+
+    environment:
+      - MYSQL_DATABASE=wp-example
+      - MYSQL_USER=lucas
+      - MYSQL_PASSWORD=123456
+      - MYSQL_ROOT_PASSWORD=123456
+    
+    volumes:
+      - db:/var/lib/mysql
+    
+    ports:
+      - 8080:8080
+    
+    networks:
+      - meu-blog
+
+# criando network
+networks:
+
+  # nome da network
+  meu-blog:
+
+    # drive utilizado
+    driver: bridge
+
+# criando volumes
+volumes:
+
+  # volumes na minha máquina somente neste caso.
+  wordpress:
+  db:

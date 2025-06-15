@@ -1,0 +1,16 @@
+
+Docker compose: ferramenta do Docker utilizada para coordenar containers.
+
+arquivo usado: docker-compose.yml
+
+Comandos utilizados na aula sem Docker compose:
+
+Container MySQL: 
+docker run -dit --name mysql -e MYSQL_DATABASE=wp-example -e MYSQL_USER=lucas -e MYSQL_PASSWORD=123456 -e MYSQL_ROOT_PASSWORD=123456 --mount source=db,target=/var/lib/mysql --network meu-blog -p 8080:8080 mysql:5.7
+
+Container Wordpress: 
+docker run -dit --name wordpress -e WORDPRESS_DB_HOST=mysql -e WORDPRESS_DB_USER=lucas -e WORDPRESS_DB_PASSWORD=123456 -e WORDPRESS_DB_NAME=wp-example --mount source=wordpress,target=/var/www/html --network meu-blog -p 80:80 wordpress:6.2.2​​
+
+(subindo containers com docker compose)
+(estar na raiz do projeto. onde está o docker compose)
+=== docker compose up
