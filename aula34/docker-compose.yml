@@ -6,7 +6,7 @@
 services:
 
   # nome do serviço
-  meu-blog: 
+  meu-blog:
 
     # nome da imagem
     image: wordpress:6.2.2
@@ -17,13 +17,17 @@ services:
     # sempre que ouver uma falha no container/docker demo for reiniciado, esse container será reiniciado também.
     restart: always
 
-    # variaveis de ambiente
-    environment:
-        # host é a porta do db. neste caso é o nome do container.
-      - WORDPRESS_DB_HOST=mysql
-      - WORDPRESS_DB_USER=lucas
-      - WORDPRESS_DB_PASSWORD=123456
-      - WORDPRESS_DB_NAME=wp-example
+    # variaveis de ambiente caso não esteja usando ".env"
+    # environment:
+    #     # host é a porta do db. neste caso é o nome do container.
+    #   - WORDPRESS_DB_HOST=mysql
+    #   - WORDPRESS_DB_USER=lucas
+    #   - WORDPRESS_DB_PASSWORD=123456
+    #   - WORDPRESS_DB_NAME=wp-example
+
+    # forma correta de usar variáveis de ambiente com ".env"
+    env_file:
+      - .env
 
     # bind de portas. porta máquina : porta container
     ports:
@@ -37,6 +41,15 @@ services:
     # definir qual network usar. (criar network antes ou usar padrão)
     networks:
       - meu-blog
+    
+    # informa qual serviço o serviço "meu-blog" depende.
+    # depends_on: usado no local onde o serviço vai depender de outro.
+    # primeiramente o docker inicializa o db pra depois inicializar do meu-blog
+    depends_on:
+      - db
+
+
+
   db:
     image: mysql:5.7
 
@@ -44,11 +57,14 @@ services:
 
     restart: always
 
-    environment:
-      - MYSQL_DATABASE=wp-example
-      - MYSQL_USER=lucas
-      - MYSQL_PASSWORD=123456
-      - MYSQL_ROOT_PASSWORD=123456
+    # environment:
+    #   - MYSQL_DATABASE=wp-example
+    #   - MYSQL_USER=lucas
+    #   - MYSQL_PASSWORD=123456
+    #   - MYSQL_ROOT_PASSWORD=123456
+
+    env_file:
+      - .env
     
     volumes:
       - db:/var/lib/mysql

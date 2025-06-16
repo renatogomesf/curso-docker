@@ -13,4 +13,8 @@ docker run -dit --name wordpress -e WORDPRESS_DB_HOST=mysql -e WORDPRESS_DB_USER
 
 (subindo containers com docker compose)
 (estar na raiz do projeto. onde está o docker compose)
+(mantem o terminal travado com os containers rodando)
 === docker compose up
+
+(-d: libera o terminal. destrava/desatacha para uso.)
+=== docker compose up -d
