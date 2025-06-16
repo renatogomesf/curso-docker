@@ -8,7 +8,7 @@ services:
   # nome do serviço
   meu-blog:
 
-    # nome da imagem
+    # nome da imagem (usa uma imagem existente)
     image: wordpress:6.2.2
 
     # nome do container

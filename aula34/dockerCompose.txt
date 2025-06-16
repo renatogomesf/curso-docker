@@ -18,3 +18,11 @@ docker run -dit --name wordpress -e WORDPRESS_DB_HOST=mysql -e WORDPRESS_DB_USER
 
 (-d: libera o terminal. destrava/desatacha para uso.)
 === docker compose up -d
+
+
+(para todos as containers, apaga eles e a rede atrelada)
+(como eu estou dentro da pasta raiz do projeto pelo terminal "aula36" ele só faz a operação com os containers e rede que estão sendo usados/atrelados a essa pasta raiz. ou seja, relacionados aos dockerfile e compose daquela pasta.)
+=== docker compose down
+
+(para os containers sem removelos)
+=== docker compose stop

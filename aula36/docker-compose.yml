@@ -1,0 +1,93 @@
+
+services:
+  mongo:
+
+    # como não existe a imagem. então o próprio compose faz o build de uma com base no arquivo dockerfile existente.
+    build:
+
+      # onde o arquivo dockerfile está inserido... como está no mesmo local que o compose, usa-se o ponto "."
+      context: .
+      dockerfile: mongodb.dockerfile
+
+    container_name: meu-mongodb
+    ports:
+      - 27017:27017
+    volumes:
+      - mongo-volume:/data/db
+    networks:
+      - rede-aplicacao
+
+
+  mongo-express:
+    build:
+      context: .
+      dockerfile: mongo-express.dockerfile
+    container_name:  mongo-express
+    ports:
+      - 8081:8081
+    networks:
+      - rede-aplicacao
+    depends_on:
+      - mongo
+
+  node1:
+    build:
+      context: .
+      dockerfile: app.dockerfile
+    container_name: node1
+    ports:
+      - 3001:3000
+    networks:
+      - rede-aplicacao
+    depends_on:
+      - mongo
+
+  node2:
+    build:
+      context: .
+      dockerfile: app.dockerfile
+    container_name: node2
+    ports:
+      - 3002:3000
+    networks:
+      - rede-aplicacao
+    depends_on:
+      - mongo
+
+  node3:
+    build:
+      context: .
+      dockerfile: app.dockerfile
+    container_name: node3
+    ports:
+      - 3003:3000
+    networks:
+      - rede-aplicacao
+    depends_on:
+      - mongo
+
+  nginx:
+
+    # imagem do docker hub
+    image: nginx:stable-alpine
+    container_name: nginx
+    ports:
+      - 80:80
+    networks:
+      - rede-aplicacao
+
+    # usando o arquivo de configuração local para ser passado para dentro do container quando ele for criado.
+    # esse arquivo é o BALANCEADOR DE CARGAS. ele define pra qual aplicação/container usar... node1, node2 ou node3. a cada atualização ele muda de container.
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - node1
+      - node2
+      - node3
+
+# criando o volume e a network que será usada pelos containers.
+volumes:
+  mongo-volume:
+networks:
+  rede-aplicacao:
+    driver: bridge
